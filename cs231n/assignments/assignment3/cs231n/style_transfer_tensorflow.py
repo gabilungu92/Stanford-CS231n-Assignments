@@ -16,8 +16,6 @@ def tv_loss(img, tv_weight):
     # Your implementation should be vectorized and not require any loops!
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
     _, H, W, C = img.shape
-    height = img[:,1:H, :,:] - img[:,0:(H-1),:,:]
-    width  = img[:,:,1:W,:] - img[:,:,0:(W-1),:]
     loss = tv_weight * (tf.math.reduce_sum(tf.math.squared_difference( img[:,1:H, :,:] , img[:,0:(H-1),:,:]))
     + tf.math.reduce_sum(tf.math.squared_difference(img[:,:,1:W,:] , img[:,:,0:(W-1),:])) )
     return loss
